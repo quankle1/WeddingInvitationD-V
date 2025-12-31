@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Wax Seal Click Handler
     const waxSeal = document.getElementById('waxSeal');
 
-    // Add click event listener to wax seal
-    waxSeal.addEventListener('click', function (e) {
+    // Function to handle navigation
+    function handleWaxSealClick(e) {
         // Prevent default behavior and stop propagation
         e.preventDefault();
         e.stopPropagation();
@@ -33,13 +33,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Add breaking animation
-        this.style.animation = 'break 0.6s ease-out forwards';
+        waxSeal.style.animation = 'break 0.6s ease-out forwards';
 
         // Navigate to page 2 after animation
         setTimeout(() => {
             window.location.href = 'page2.html';
         }, 600);
-    });
+    }
+
+    // Add both click and touchend event listeners for better mobile support
+    waxSeal.addEventListener('click', handleWaxSealClick);
+    waxSeal.addEventListener('touchend', handleWaxSealClick);
 
     // Hover effects removed to prevent movement
 });
@@ -64,10 +68,16 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Add particle effect on click (optional enhancement)
-waxSeal.addEventListener('click', function (e) {
-    createParticles(e.clientX, e.clientY);
-});
+// Add particle effect on interaction (optional enhancement)
+function addParticleEffect(e) {
+    const x = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const y = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    if (x && y) {
+        createParticles(x, y);
+    }
+}
+waxSeal.addEventListener('click', addParticleEffect);
+waxSeal.addEventListener('touchstart', addParticleEffect);
 
 function createParticles(x, y) {
     const particleCount = 12;
@@ -104,9 +114,5 @@ function createParticles(x, y) {
     }
 }
 
-// Prevent default touch behaviors for better mobile experience
-document.addEventListener('touchstart', function (e) {
-    if (e.target.closest('#waxSeal')) {
-        e.preventDefault();
-    }
-}, { passive: false });
+// Improved mobile touch handling
+// Removed preventDefault to allow click events to fire properly on mobile
