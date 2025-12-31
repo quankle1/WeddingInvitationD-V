@@ -413,11 +413,31 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.date-column.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .left-column,
 .right-column {
     flex: 1;
+}
+
+.left-column.animate {
+    transition-delay: 0.1s;
+}
+
+.center-column.animate {
+    transition-delay: 0.3s;
+}
+
+.right-column.animate {
+    transition-delay: 0.5s;
 }
 
 .center-column {
@@ -631,15 +651,15 @@ body {
     align-items: center;
     gap: 0.3rem;
     opacity: 0;
-    animation: flowThrough 1.8s ease-out forwards;
+    transform: translateX(-30px) translateY(-20px);
 }
 
-.date-group-left {
-    animation-delay: 0.2s;
+.date-group-left.animate {
+    animation: flowThrough 1.8s ease-out 0.2s forwards;
 }
 
-.date-group-right {
-    animation-delay: 1s;
+.date-group-right.animate {
+    animation: flowThrough 1.8s ease-out 1s forwards;
 }
 
 .date-label {
@@ -666,6 +686,10 @@ body {
     line-height: 1;
     margin: 0 1.5rem;
     opacity: 0;
+    transform: scale(0.5);
+}
+
+.date-number-huge.animate {
     animation: centerReveal 1.2s ease-out 0.6s forwards;
 }
 
@@ -863,7 +887,6 @@ body {
     font-family: 'Great Vibes', cursive;
     font-size: 4rem;
     color: #b8956a;
-    margin-bottom: 2rem;
     text-shadow: 0 2px 10px rgba(184, 149, 106, 0.2);
 }
 
@@ -1044,9 +1067,6 @@ body {
 }
 
 @media (max-width: 480px) {
-    .countdown-main-heading {
-        font-size: 2.5rem;
-    }
 
     .countdown-number {
         font-size: 2.5rem;
@@ -2516,5 +2536,28 @@ body {
         top: 10px;
         right: 20px;
         font-size: 30px;
+    }
+}
+
+/* Countdown decoration image */
+.countdown-decoration-image {
+    display: block;
+    margin: 2rem auto 0;
+    max-width: 150px;
+    height: auto;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .countdown-decoration-image {
+        max-width: 120px;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-decoration-image {
+        max-width: 100px;
+        margin-top: 1rem;
     }
 }

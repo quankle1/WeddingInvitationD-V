@@ -32,13 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('musicPlaying', 'true');
         }
 
-        // Add breaking animation
-        waxSeal.style.animation = 'break 0.6s ease-out forwards';
+        // Add click animation
+        waxSeal.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+        waxSeal.style.transform = 'scale(0.9)';
+        waxSeal.style.opacity = '0.5';
 
-        // Navigate to page 2 after animation
+        // Navigate to page 2 after animation completes
         setTimeout(() => {
             window.location.href = 'page2.html';
-        }, 600);
+        }, 400);
     }
 
     // Add both click and touchend event listeners for better mobile support

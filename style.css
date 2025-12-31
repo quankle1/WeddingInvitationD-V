@@ -112,45 +112,55 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Wax Seal - positioned at 70% from left (7:3 ratio), 40% from top */
+/* Wax Seal - centered at 70% horizontally, 50% vertically */
 .wax-seal-container {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 70%;
-    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    margin-top: -70px;
+    /* Half of height to center */
+    margin-left: -70px;
+    /* Half of width to center */
     cursor: pointer;
     z-index: 10;
-    transition: none;
-    transform-origin: center center;
     user-select: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Keep position when hovering - no scale */
-.wax-seal-container:hover {
-    transform: translate(-50%, -50%) !important;
-}
-
-/* Keep it still when clicked - no movement */
-.wax-seal-container:active {
-    transform: translate(-50%, -50%) !important;
-}
-
-
 .wax-seal {
     width: 140px;
     height: 140px;
     display: block;
-    /* Transparent PNG - simple drop shadow */
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
-    /* Strong animation to indicate clickability */
-    animation: pulse-glow 1.2s ease-in-out infinite;
     position: relative;
     z-index: 11;
+    /* Add pulse animation */
+    animation: pulse 2s ease-in-out infinite;
 }
 
-/* Strong Pulse Animation - Clear call to action */
+/* Stop animation on hover to keep it stable */
+.wax-seal-container:hover .wax-seal {
+    animation: none;
+    opacity: 0.8;
+}
+
+/* Pulse animation - using opacity only to prevent jumping */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Strong Pulse Animation - Clear call to action - DISABLED */
 @keyframes pulse-glow {
 
     0%,
@@ -197,20 +207,15 @@ body {
     }
 
     .wax-seal-container {
-        top: 40%;
-        left: 70%;
-        transform: translate(-50%, -50%);
-        transition: none;
+        top: 50%;
+        left: 75%;
+        width: 120px;
+        height: 120px;
+        margin-top: -60px;
+        /* Half of 120px */
+        margin-left: -60px;
+        /* Half of 120px */
     }
-
-    .wax-seal-container:hover {
-        transform: translate(-50%, -50%) !important;
-    }
-
-    .wax-seal-container:active {
-        transform: translate(-50%, -50%) !important;
-    }
-
 
     .wax-seal {
         width: 120px;
@@ -249,18 +254,12 @@ body {
     }
 
     .wax-seal-container {
-        top: 40%;
+        top: 50%;
         left: 70%;
-        transform: translate(-50%, -50%);
-        transition: none;
-    }
-
-    .wax-seal-container:hover {
-        transform: translate(-50%, -50%) !important;
-    }
-
-    .wax-seal-container:active {
-        transform: translate(-50%, -50%) !important;
+        width: 140px;
+        height: 140px;
+        margin-top: -70px;
+        margin-left: -70px;
     }
 }
 

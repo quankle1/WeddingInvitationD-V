@@ -95,6 +95,51 @@ document.addEventListener('DOMContentLoaded', function () {
         sections[0].style.transform = 'translateY(0)';
     }
 
+    // Animate wedding-date-grid columns on scroll
+    const dateGrid = document.querySelector('.wedding-date-grid');
+    if (dateGrid) {
+        const dateColumns = dateGrid.querySelectorAll('.date-column');
+
+        const dateGridObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animate class to all columns with stagger effect
+                    dateColumns.forEach((column, index) => {
+                        setTimeout(() => {
+                            column.classList.add('animate');
+                        }, index * 200); // 200ms delay between each column
+                    });
+                    dateGridObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        dateGridObserver.observe(dateGrid);
+    }
+
+    // Animate date-display-full on scroll
+    const dateDisplayFull = document.querySelector('.date-display-full');
+    if (dateDisplayFull) {
+        const dateGroupLeft = dateDisplayFull.querySelector('.date-group-left');
+        const dateGroupRight = dateDisplayFull.querySelector('.date-group-right');
+        const dateNumberHuge = dateDisplayFull.querySelector('.date-number-huge');
+
+        const dateDisplayObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animate class to trigger animations
+                    if (dateGroupLeft) dateGroupLeft.classList.add('animate');
+                    if (dateGroupRight) dateGroupRight.classList.add('animate');
+                    if (dateNumberHuge) dateNumberHuge.classList.add('animate');
+
+                    dateDisplayObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        dateDisplayObserver.observe(dateDisplayFull);
+    }
+
     // Directions button functionality
     const directionsBtn = document.getElementById('directionsBtn');
     if (directionsBtn) {
