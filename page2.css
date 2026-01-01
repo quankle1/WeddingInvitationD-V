@@ -2146,7 +2146,7 @@ body {
 .carousel-image-container {
     width: 100%;
     max-width: 700px;
-    height: 500px;
+    height: 650px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
@@ -2259,7 +2259,7 @@ body {
 /* Responsive for Album */
 @media (max-width: 768px) {
     .carousel-image-container {
-        height: 350px;
+        height: 450px;
     }
 
     .carousel-nav {
@@ -2293,7 +2293,7 @@ body {
 
 @media (max-width: 480px) {
     .carousel-image-container {
-        height: 250px;
+        height: 380px;
     }
 
     .carousel-nav {
@@ -2559,5 +2559,442 @@ body {
     .countdown-decoration-image {
         max-width: 100px;
         margin-top: 1rem;
+    }
+}
+
+/* Section 7: Timeline, Dresscode & Calendar */
+.timeline-dresscode-section {
+    width: 100%;
+    min-height: auto;
+    background: linear-gradient(135deg, #faf8f5 0%, #f5f2ed 100%);
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.timeline-dresscode-content {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Top row: Timeline and Dresscode side by side */
+.timeline-dresscode-row {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Timeline Block - clean white background */
+.timeline-block {
+    background: transparent;
+    padding: 1rem;
+    flex: 1;
+    max-width: 280px;
+}
+
+.section-subtitle {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    color: #5a4a3a;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+/* Zigzag Timeline Layout */
+.timeline-zigzag {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* Vertical center line */
+.timeline-zigzag::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    bottom: 25px;
+    width: 2px;
+    background: linear-gradient(to bottom, #b8956a 0%, #d4c5a0 50%, #b8956a 100%);
+    transform: translateX(-50%);
+}
+
+.timeline-zigzag-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    margin: 8px 0;
+}
+
+.timeline-zigzag-item.left {
+    align-items: flex-start;
+    padding-right: 55%;
+    text-align: left;
+}
+
+.timeline-zigzag-item.right {
+    align-items: flex-end;
+    padding-left: 55%;
+    text-align: right;
+}
+
+.timeline-zigzag-item .timeline-time {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #5a4a3a;
+    line-height: 1.2;
+}
+
+.timeline-label-small {
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    color: #8b7355;
+    font-style: italic;
+}
+
+/* Dots on center line */
+.timeline-dot-center {
+    width: 10px;
+    height: 10px;
+    background: #b8956a;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.timeline-zigzag-item.left+.timeline-dot-center {
+    top: 50%;
+}
+
+/* Dresscode Block - Tilted card style */
+.dresscode-block-tilted {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    transform: rotate(3deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 200px;
+    margin-top: 2rem;
+}
+
+.dresscode-block-tilted:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 0 15px 50px rgba(201, 168, 106, 0.25);
+}
+
+.section-subtitle-dresscode {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #5a4a3a;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+}
+
+/* Dresscode color swatches in a row */
+.dresscode-colors-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+
+.color-swatch-large {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.color-swatch-large:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Keep old styles for compatibility */
+.dresscode-block {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+    max-width: 400px;
+}
+
+.dresscode-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(201, 168, 106, 0.2);
+}
+
+.dresscode-colors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.color-swatch {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.color-swatch:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.dresscode-note {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: #8b7355;
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Calendar Block */
+.calendar-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+.calendar-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.calendar-image:hover {
+    transform: scale(1.03);
+}
+
+/* Timeline items - legacy support */
+.timeline-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 80px auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.timeline-time {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #5a4a3a;
+}
+
+.timeline-dot {
+    width: 16px;
+    height: 16px;
+    background: #b8956a;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #b8956a;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-label {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: #7a7a7a;
+}
+
+.timeline-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, #b8956a, #d4c5a0);
+    margin-left: 87px;
+    position: relative;
+}
+
+/* Tablet Responsive */
+@media (max-width: 768px) {
+    .timeline-dresscode-row {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .timeline-block {
+        max-width: 180px;
+        width: auto;
+        padding: 0.5rem;
+        flex: 0 0 auto;
+    }
+
+    .dresscode-block-tilted {
+        transform: rotate(3deg);
+        max-width: 160px;
+        margin-top: 2rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-zigzag-item .timeline-time {
+        font-size: 1.2rem;
+    }
+
+    .timeline-label-small {
+        font-size: 0.7rem;
+    }
+
+    .section-subtitle-dresscode {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .color-swatch-large {
+        width: 30px;
+        height: 30px;
+    }
+
+    .calendar-image {
+        max-width: 320px;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .timeline-dresscode-section {
+        padding: 2rem 0.8rem;
+    }
+
+    .timeline-dresscode-content {
+        gap: 1rem;
+    }
+
+    .timeline-dresscode-row {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .timeline-block {
+        padding: 0.3rem;
+        max-width: 150px;
+        flex: 0 0 auto;
+    }
+
+    .section-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .timeline-zigzag {
+        padding: 0 5px 0 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Mobile: All timeline items on the left, stacked vertically */
+    .timeline-zigzag::before {
+        left: 8px;
+        top: 0;
+        bottom: 0;
+    }
+
+    .timeline-zigzag-item,
+    .timeline-zigzag-item.left,
+    .timeline-zigzag-item.right {
+        width: auto;
+        margin: 10px 0;
+        padding: 0 0 0 5px !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .timeline-zigzag-item .timeline-time {
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.1;
+    }
+
+    .timeline-label-small {
+        font-size: 0.65rem;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .timeline-dot-center {
+        display: none;
+    }
+
+    .dresscode-block-tilted {
+        padding: 1rem 0.8rem;
+        max-width: 130px;
+        margin-top: 1.5rem;
+        transform: rotate(3deg);
+    }
+
+    .section-subtitle-dresscode {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .dresscode-colors-row {
+        gap: 0.3rem;
+    }
+
+    .color-swatch-large {
+        width: 25px;
+        height: 25px;
+        border-radius: 3px;
+    }
+
+    .calendar-block {
+        padding: 0.5rem;
+    }
+
+    .calendar-image {
+        max-width: 260px;
     }
 }
