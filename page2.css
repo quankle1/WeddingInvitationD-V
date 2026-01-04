@@ -3330,23 +3330,8 @@ body {
 
 .love-quote::before,
 .love-quote::after {
-    content: '"';
-    font-family: 'Great Vibes', cursive;
-    font-size: 3rem;
-    color: #c9a86a;
-    opacity: 0.5;
-    position: absolute;
-}
-
-.love-quote::before {
-    top: 0.5rem;
-    left: 1rem;
-}
-
-.love-quote::after {
-    content: '"';
-    bottom: 0;
-    right: 1rem;
+    content: '';
+    display: none;
 }
 
 /* Photo Quote - Overlay on image */
