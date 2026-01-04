@@ -2641,12 +2641,14 @@ body {
 .timeline-zigzag-item.left {
     align-items: flex-start;
     padding-right: 55%;
+    padding-left: 0;
     text-align: left;
 }
 
 .timeline-zigzag-item.right {
     align-items: flex-end;
     padding-left: 55%;
+    padding-right: 0;
     text-align: right;
 }
 
@@ -2665,20 +2667,36 @@ body {
     font-style: italic;
 }
 
-/* Dots on center line */
+/* Dots on center line - hide HTML dots, use pseudo-elements instead */
 .timeline-dot-center {
-    width: 10px;
-    height: 10px;
-    background: #b8956a;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
+    display: none;
 }
 
-.timeline-zigzag-item.left+.timeline-dot-center {
+/* Desktop: dots on center line via pseudo-elements */
+.timeline-zigzag-item.left::after,
+.timeline-zigzag-item.right::after {
+    content: '';
+    position: absolute;
     top: 50%;
+    width: 12px;
+    height: 12px;
+    background: #8B1A1A;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2);
+}
+
+/* Left item: dot on the right side (center line) */
+.timeline-zigzag-item.left::after {
+    right: 50%;
+    transform: translateY(-50%) translateX(50%);
+}
+
+/* Right item: dot on the left side (center line) */
+.timeline-zigzag-item.right::after {
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
 }
 
 /* Dresscode Block - Tilted card style */
@@ -2916,55 +2934,103 @@ body {
         gap: 0.5rem;
     }
 
+
     .timeline-block {
-        padding: 0.3rem;
-        max-width: 150px;
+        padding: 0.5rem;
+        max-width: 200px;
+        min-width: 180px;
         flex: 0 0 auto;
     }
 
     .section-subtitle {
-        font-size: 1.3rem;
-        margin-bottom: 0.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
     }
 
     .timeline-zigzag {
-        padding: 0 5px 0 20px;
+        padding: 0 5px;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        position: relative;
     }
 
-    /* Mobile: All timeline items on the left, stacked vertically */
+    /* Mobile: Show vertical line clearly */
     .timeline-zigzag::before {
-        left: 8px;
-        top: 0;
-        bottom: 0;
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 20px;
+        bottom: 20px;
+        width: 2px;
+        background: linear-gradient(to bottom, #b8956a 0%, #d4c5a0 50%, #b8956a 100%);
+        transform: translateX(-50%);
     }
 
-    .timeline-zigzag-item,
-    .timeline-zigzag-item.left,
-    .timeline-zigzag-item.right {
-        width: auto;
+    .timeline-zigzag-item {
+        width: 100%;
         margin: 10px 0;
-        padding: 0 0 0 5px !important;
+        position: relative;
+    }
+
+    /* Mobile: Left items - align to left side */
+    .timeline-zigzag-item.left {
         align-items: flex-start !important;
+        padding-right: 52% !important;
+        padding-left: 5px !important;
         text-align: left !important;
+    }
+
+    /* Mobile: Right items - align to right side */
+    .timeline-zigzag-item.right {
+        align-items: flex-end !important;
+        padding-left: 52% !important;
+        padding-right: 5px !important;
+        text-align: right !important;
     }
 
     .timeline-zigzag-item .timeline-time {
         font-size: 1.1rem;
-        font-weight: 600;
+        font-weight: 700;
         line-height: 1.1;
+        color: #5a4a3a;
     }
 
     .timeline-label-small {
-        font-size: 0.65rem;
-        line-height: 1.2;
+        font-size: 0.7rem;
+        line-height: 1.3;
         white-space: nowrap;
+        color: #8b7355;
     }
 
+    /* Mobile: Hide the HTML dots - use only pseudo-element dots */
     .timeline-dot-center {
-        display: none;
+        display: none !important;
+    }
+
+    /* Position dots on the center line, aligned with each timeline item */
+    .timeline-zigzag-item.left::after,
+    .timeline-zigzag-item.right::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        background: #8B1A1A;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+        box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2);
+    }
+
+    /* Left item: dot on the right side (center line) */
+    .timeline-zigzag-item.left::after {
+        right: 46%;
+    }
+
+    /* Right item: dot on the left side (center line) */
+    .timeline-zigzag-item.right::after {
+        left: 46%;
     }
 
     .dresscode-block-tilted {
@@ -3243,5 +3309,217 @@ body {
     .music-icon {
         width: 22px;
         height: 22px;
+    }
+}
+
+/* Love Quote Styles */
+.love-quote {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #5a4a3a;
+    text-align: center;
+    line-height: 1.8;
+    padding: 2rem 1.5rem;
+    margin: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(250, 248, 245, 0.9) 100%);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.love-quote::before,
+.love-quote::after {
+    content: '"';
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #c9a86a;
+    opacity: 0.5;
+    position: absolute;
+}
+
+.love-quote::before {
+    top: 0.5rem;
+    left: 1rem;
+}
+
+.love-quote::after {
+    content: '"';
+    bottom: 0;
+    right: 1rem;
+}
+
+/* Photo Quote - Overlay on image */
+.photo-quote {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: white;
+    text-align: center;
+    line-height: 1.8;
+    padding: 1.5rem 2rem;
+    margin: 0;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.single-photo-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Responsive Quotes */
+@media (max-width: 768px) {
+    .love-quote {
+        font-size: 1rem;
+        padding: 1.5rem 1rem;
+        line-height: 1.7;
+    }
+
+    .love-quote::before,
+    .love-quote::after {
+        font-size: 2rem;
+    }
+
+    .photo-quote {
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+        width: 85%;
+        top: 8%;
+    }
+}
+
+@media (max-width: 480px) {
+    .love-quote {
+        font-size: 0.9rem;
+        padding: 1.2rem 0.8rem;
+        line-height: 1.6;
+    }
+
+    .love-quote::before,
+    .love-quote::after {
+        font-size: 1.5rem;
+    }
+
+    .photo-quote {
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+        width: 90%;
+        top: 5%;
+    }
+}
+
+/* Section 6: Photo Quote Section - Elegant Design */
+.single-photo-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.single-photo-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+}
+
+.single-romantic-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.photo-quote-overlay {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+    max-width: 650px;
+    z-index: 10;
+}
+
+.photo-quote-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: white;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
+}
+
+.photo-quote-subtext {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    line-height: 1.7;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.03em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .single-photo-wrapper {
+        min-height: 450px;
+    }
+
+    .photo-quote-text {
+        font-size: 2.2rem;
+    }
+
+    .photo-quote-subtext {
+        font-size: 1rem;
+    }
+
+    .photo-quote-overlay {
+        top: 6%;
+        width: 92%;
+    }
+}
+
+@media (max-width: 480px) {
+    .single-photo-wrapper {
+        min-height: 400px;
+    }
+
+    .photo-quote-text {
+        font-size: 1.8rem;
+    }
+
+    .photo-quote-subtext {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .photo-quote-overlay {
+        top: 5%;
+        width: 94%;
+    }
+
+    .photo-overlay-gradient {
+        height: 60%;
     }
 }

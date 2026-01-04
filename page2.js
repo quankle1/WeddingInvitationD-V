@@ -155,9 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (directionsBtn) {
         directionsBtn.addEventListener('click', function () {
             // Google Maps URL with coordinates
-            const latitude = 10.5547791;
-            const longitude = 105.3177948;
-            const mapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+            const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=10.5594435,105.3300247';
 
             // Open in new tab
             window.open(mapsUrl, '_blank');
