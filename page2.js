@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const formMessage = document.getElementById('formMessage');
 
     // TODO: Replace this URL with your Google Apps Script Web App URL
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTgeOG5jSTEJtLg-n8aZGj8JhQi8c4cd1AcSUXsHL6IqN2ses-k0SCfk4PL1TkJImMSw/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyDExXoJpaHfHOT4fnmGkT7pBXvc3J55rGvrvY1jlARxlLOnY5-LY_sQAXpjPpgBLAW0w/exec';
 
     if (rsvpForm) {
         rsvpForm.addEventListener('submit', async function (e) {
