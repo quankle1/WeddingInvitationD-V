@@ -3008,29 +3008,35 @@ body {
         display: none !important;
     }
 
-    /* Position dots on the center line, aligned with each timeline item */
-    .timeline-zigzag-item.left::after,
-    .timeline-zigzag-item.right::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        width: 10px;
-        height: 10px;
-        background: #8B1A1A;
-        border-radius: 50%;
-        transform: translateY(-50%);
-        z-index: 3;
-        box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2);
+    /* Mobile: Position ALL dots at exactly 50% - override desktop separately */
+    .timeline-zigzag .timeline-zigzag-item.left::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        width: 10px !important;
+        height: 10px !important;
+        background: #8B1A1A !important;
+        border-radius: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 3 !important;
+        box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2) !important;
     }
 
-    /* Left item: dot on the right side (center line) */
-    .timeline-zigzag-item.left::after {
-        right: 46%;
-    }
-
-    /* Right item: dot on the left side (center line) */
-    .timeline-zigzag-item.right::after {
-        left: 46%;
+    .timeline-zigzag .timeline-zigzag-item.right::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        width: 10px !important;
+        height: 10px !important;
+        background: #8B1A1A !important;
+        border-radius: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 3 !important;
+        box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2) !important;
     }
 
     .dresscode-block-tilted {
