@@ -261,6 +261,11 @@ body {
     color: var(--primary-red) !important;
 }
 
+/* Save the Date - THE DATE text */
+.serif-text {
+    color: var(--primary-red-dark) !important;
+}
+
 .couple-info-name {
     color: var(--primary-red-soft) !important;
 }
