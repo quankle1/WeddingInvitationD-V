@@ -214,10 +214,6 @@ body {
     color: var(--text-dark) !important;
 }
 
-/* (Cố Phụ) text */
-.small-text {
-    color: var(--primary-red-soft) !important;
-}
 
 /* Invitation message - dòng mời */
 .invitation-message-repeat {
@@ -556,11 +552,6 @@ body {
 /* ========== MESSAGE SECTION ========== */
 .script-signature {
     color: var(--accent-pink) !important;
-}
-
-/* ========== SMALL TEXT ========== */
-.small-text {
-    color: var(--primary-red) !important;
 }
 
 /* ========== INDEX PAGE SPECIFIC (style.css overrides) ========== */
